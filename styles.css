@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: var(--blanco);
+    background-color: var(--almendra); /* Color almendra claro */
     color: var(--gris-oscuro);
     line-height: 1.5;
 }
