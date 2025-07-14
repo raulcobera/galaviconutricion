@@ -1,67 +1,343 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Navegación entre pestañas
-    const tabLinks = document.querySelectorAll('[data-tab]');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Ocultar todas las pestañas
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Mostrar la pestaña seleccionada
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-            
-            // Desplazamiento suave al inicio
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
-            // Actualizar la URL sin recargar
-            history.pushState(null, null, `#${tabId}`);
-        });
-    });
-    
-    // Manejar clic en recetas (simulación)
-    const recipeCards = document.querySelectorAll('[data-recipe]');
-    recipeCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            e.preventDefault();
-            const recipeType = this.getAttribute('data-recipe');
-            alert(`Próximamente: Recetas de ${recipeType}. Esta función estará disponible en la próxima actualización.`);
-        });
-    });
-    
-    // Cargar la pestaña correcta al cargar la página
-    function loadInitialTab() {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-            const targetTab = document.getElementById(hash);
-            if (targetTab) {
-                tabContents.forEach(content => content.classList.remove('active'));
-                targetTab.classList.add('active');
-            }
-        }
+:root {
+    --almendra: #EADDCA;  /* Color almendra principal */
+    --almendra-oscuro: #D2B48C;  /* Tono más oscuro */
+    --gris-claro: #f5f5f7;
+    --gris-oscuro: #1d1d1f;
+    --blanco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--almendra); /* Fondo almendra */
+    color: var(--gris-oscuro);
+    line-height: 1.5;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: rgba(234, 220, 202, 0.9); /* Almendra con transparencia */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--almendra-oscuro);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--gris-oscuro);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--almendra-oscuro);
+}
+
+/* Contenido principal */
+main {
+    margin-top: 60px;
+    min-height: calc(100vh - 120px);
+}
+
+.section {
+    background-color: var(--blanco);
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.hero {
+    background-color: var(--almendra-oscuro);
+    text-align: center;
+    padding: 120px 20px;
+    color: var(--blanco);
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--almendra-oscuro);
+    color: var(--blanco);
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--almendra);
+    color: var(--gris-oscuro);
+    transform: scale(1.05);
+}
+
+/* Sección de servicios */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    background-color: var(--blanco);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--almendra-oscuro);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 25px;
+}
+
+.service-content h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+    color: var(--almendra-oscuro);
+}
+
+/* Sección de recetas */
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.recipe-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    height: 300px;
+    border: 1px solid var(--almendra);
+}
+
+.recipe-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.recipe-card:hover .recipe-img {
+    transform: scale(1.1);
+}
+
+.recipe-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    color: var(--blanco);
+}
+
+/* Sección de novedades */
+.news-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.news-description {
+    margin: 20px 0;
+}
+
+/* Sección de contacto */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: var(--almendra-oscuro);
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.contact-text h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.social-container {
+    margin-top: 50px;
+}
+
+.social-links {
+    display: flex;
+    margin-top: 30px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--almendra);
+    color: var(--gris-oscuro);
+    margin-right: 15px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-link:hover {
+    background-color: var(--almendra-oscuro);
+    color: var(--blanco);
+    transform: scale(1.1);
+}
+
+/* WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    color: var(--blanco);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Pie de página */
+footer {
+    background-color: var(--almendra-oscuro);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--blanco);
+}
+
+/* Estilos para pestañas */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
     }
-    
-    // Manejar el botón de retroceso/avance del navegador
-    window.addEventListener('popstate', function() {
-        loadInitialTab();
-    });
-    
-    // Actualizar enlace de novedades (ejemplo)
-    function updateNewsLink() {
-        // Aquí podrías cargar dinámicamente el último enlace desde una base de datos o API
-        const newsLink = document.getElementById('novedad-link');
-        // newsLink.href = "URL_ACTUALIZADA";
+
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    
-    // Inicializar
-    loadInitialTab();
-    updateNewsLink();
-});
+
+    .nav-links li {
+        margin: 5px 15px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .section {
+        padding: 40px 20px;
+        margin: 20px auto;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+}
