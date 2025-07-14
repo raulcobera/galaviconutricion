@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaviNutrición - Nutrición Personalizada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="logo">galaviconutricion</a>
+            <ul class="nav-links">
+                <li><a href="#" data-tab="inicio">Inicio</a></li>
+                <li><a href="#" data-tab="servicios">Servicios</a></li>
+                <li><a href="#" data-tab="recetas">Recetas</a></li>
+                <li><a href="#" data-tab="novedades">Novedades</a></li>
+                <li><a href="#" data-tab="contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Pestaña Inicio -->
+        <section id="inicio" class="tab-content active">
+            <div class="hero">
+                <h1>Gala Vico</h1>
+                <p>Nutricionista especializada en crear planes personalizados para ayudarte a alcanzar tus objetivos de salud y bienestar.</p>
+                <a href="#" data-tab="servicios" class="btn">Conoce mis servicios</a>
+            </div>
+            <div class="section">
+                <h2>Sobre mí</h2>
+                <p>Como nutricionista titulada con más de 8 años de experiencia, mi misión es ayudarte a mejorar tu relación con la comida y alcanzar un estilo de vida saludable de forma sostenible. Creo en un enfoque integral que combina ciencia nutricional con hábitos realistas adaptados a tu rutina.</p>
+                <p>Mi metodología se basa en la educación nutricional, porque cuando comprendes cómo funciona tu cuerpo y qué necesita, puedes tomar decisiones informadas que te beneficien a largo plazo. No creo en dietas milagro, sino en cambios progresivos que se mantengan en el tiempo.</p>
+            </div>
+        </section>
+
+        <!-- Pestaña Servicios -->
+        <section id="servicios" class="tab-content">
+            <div class="section">
+                <h2>Servicios Nutricionales</h2>
+                <p>Ofrezco planes personalizados adaptados a tus necesidades específicas y objetivos de salud.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pérdida de peso" class="service-img">
+                        <div class="service-content">
+                            <h3>Pérdida de peso saludable</h3>
+                            <p>Plan personalizado para perder grasa manteniendo masa muscular, con seguimiento semanal y ajustes según progreso.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Nutrición deportiva" class="service-img">
+                        <div class="service-content">
+                            <h3>Nutrición deportiva</h3>
+                            <p>Optimización del rendimiento para deportistas y opositores con planes adaptados a tus entrenamientos y metas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Embarazo" class="service-img">
+                        <div class="service-content">
+                            <h3>Nutrición en embarazo</h3>
+                            <p>Acompañamiento nutricional durante el embarazo y postparto para garantizar los nutrientes necesarios en cada etapa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pestaña Recetas -->
+        <section id="recetas" class="tab-content">
+            <div class="section">
+                <h2>Recetas Saludables</h2>
+                <p>Descubre ideas deliciosas y nutritivas para cada momento del día.</p>
+                
+                <div class="recipes-grid">
+                    <a href="#" class="recipe-card" data-recipe="desayuno">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Desayunos" class="recipe-img">
+                        <div class="recipe-overlay">
+                            <h3>Desayunos</h3>
+                            <p>Energía para empezar el día</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="recipe-card" data-recipe="almuerzo">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Almuerzos" class="recipe-img">
+                        <div class="recipe-overlay">
+                            <h3>Almuerzos</h3>
+                            <p>Comidas equilibradas y saciantes</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="recipe-card" data-recipe="cena">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cenas" class="recipe-img">
+                        <div class="recipe-overlay">
+                            <h3>Cenas</h3>
+                            <p>Ligeras y digestivas</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="recipe-card" data-recipe="snacks">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Snacks" class="recipe-img">
+                        <div class="recipe-overlay">
+                            <h3>Snacks</h3>
+                            <p>Opciones saludables entre horas</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pestaña Novedades -->
+        <section id="novedades" class="tab-content">
+            <div class="section">
+                <h2>Novedades</h2>
+                <p>Mantente al día con las últimas noticias, talleres y ofertas especiales.</p>
+                
+                <div class="news-container">
+                    <h3>¡Nuevo taller de alimentación consciente!</h3>
+                    <p class="news-description">Aprende técnicas para mejorar tu relación con la comida en nuestro próximo taller online.</p>
+                    <a href="https://ejemplo.com/taller-alimentacion-consciente" id="novedad-link" class="btn">Más información</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pestaña Contacto -->
+        <section id="contacto" class="tab-content">
+            <div class="section">
+                <h2>Contacto</h2>
+                <p>Agenda una consulta o resuelve tus dudas. Estaré encantada de ayudarte.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Ubicación</h3>
+                            <p>Madrid - Marbella</p>
+                            <p>Consultas presenciales y online</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Teléfono</h3>
+                            <p>657 02 83 01</p>
+                            <p>Horario de atención: 9:00 - 20:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Horario</h3>
+                            <p>Lunes a Viernes: 9:00 - 20:00</p>
+                            <p>Sábados: 10:00 - 14:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-container">
+                    <h3>Redes Sociales</h3>
+                    <p>Sígueme para más consejos de nutrición</p>
+                    
+                    <div class="social-links">
+                        <a href="https://instagram.com/tuperfil" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@tuperfil" class="social-link" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/34657028301?text=Hola%20Gala,%20me%20interesaría%20saber%20más%20sobre%20tus%20servicios%20de%20nutrición" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 GalaviNutrición. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
