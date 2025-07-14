@@ -1,6 +1,6 @@
 :root {
-    --almendra: #EADDCA;
-    --almendra-oscuro: #D2B48C;
+    --almendra: #EADDCA;  /* Color almendra principal */
+    --almendra-oscuro: #D2B48C;  /* Tono más oscuro */
     --gris-claro: #f5f5f7;
     --gris-oscuro: #1d1d1f;
     --blanco: #ffffff;
@@ -14,14 +14,14 @@
 }
 
 body {
-    background-color: var(--blanco); /* ← Esta línea es la que cambia */
+    background-color: var(--almendra); /* Fondo almendra */
     color: var(--gris-oscuro);
     line-height: 1.5;
 }
 
 /* Barra de navegación */
 nav {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(234, 220, 202, 0.9); /* Almendra con transparencia */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: fixed;
@@ -76,22 +76,25 @@ main {
 }
 
 .section {
+    background-color: var(--blanco);
     padding: 80px 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .hero {
-    background-color: var(--gris-claro);
+    background-color: var(--almendra-oscuro);
     text-align: center;
     padding: 120px 20px;
+    color: var(--blanco);
 }
 
 .hero h1 {
     font-size: 48px;
     font-weight: 600;
     margin-bottom: 20px;
-    color: var(--almendra-oscuro);
 }
 
 .hero p {
@@ -109,8 +112,6 @@ main {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s;
-    border: none;
-    cursor: pointer;
 }
 
 .btn:hover {
@@ -133,6 +134,7 @@ main {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--almendra-oscuro);
 }
 
 .service-card:hover {
@@ -153,6 +155,7 @@ main {
 .service-content h3 {
     font-size: 21px;
     margin-bottom: 10px;
+    color: var(--almendra-oscuro);
 }
 
 /* Sección de recetas */
@@ -168,6 +171,7 @@ main {
     border-radius: 18px;
     overflow: hidden;
     height: 300px;
+    border: 1px solid var(--almendra);
 }
 
 .recipe-img {
@@ -189,11 +193,6 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     padding: 20px;
     color: var(--blanco);
-}
-
-.recipe-overlay h3 {
-    font-size: 21px;
-    margin-bottom: 5px;
 }
 
 /* Sección de novedades */
@@ -287,14 +286,14 @@ main {
 
 /* Pie de página */
 footer {
-    background-color: var(--gris-claro);
+    background-color: var(--almendra-oscuro);
     padding: 30px 20px;
     text-align: center;
     font-size: 14px;
-    color: var(--gris-oscuro);
+    color: var(--blanco);
 }
 
-/* Estilos para ocultar/mostrar pestañas */
+/* Estilos para pestañas */
 .tab-content {
     display: none;
 }
@@ -327,6 +326,11 @@ footer {
 
     .hero p {
         font-size: 18px;
+    }
+
+    .section {
+        padding: 40px 20px;
+        margin: 20px auto;
     }
 
     .whatsapp-float {
